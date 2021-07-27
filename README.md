@@ -1,7 +1,7 @@
 
 # 🚀 Starwars Example
 
-This application make with (NuxtJS + ExpressJS + Typescript), enjoy!
+This application make with (NuxtJS + ExpressJS + GraphQL + Typescript), enjoy!
 
 More:
 * Apollo GraphQL: https://www.apollographql.com/
