@@ -1,48 +1,53 @@
-# TypeScript Express API Bootstrap (base / project starter)
+SWAPI GraphQL Wrapper
+=====================
 
-This is a repository intended to serve as a starting point if you want to bootstrap a express API project in TypeScript.
+A wrapper around [SWAPI](http://swapi.dev) built using GraphQL converting it into [this schema](schema.graphql).
 
-## Features
+Uses:
 
-- [TypeScript](https://www.typescriptlang.org/) (v4)
-- [ts-node-dev](https://github.com/wclr/ts-node-dev)
-- [Prettier](https://prettier.io/)
-- [ESLint](https://eslint.org/) with:
-  - [Simple Import Sort](https://github.com/lydell/eslint-plugin-simple-import-sort/)
-  - [Import plugin](https://github.com/benmosher/eslint-plugin-import/)
-- [Jest](https://jestjs.io) with [DOM Testing Library](https://testing-library.com/docs/dom-testing-library/intro)
-- [GitHub Action workflows](https://github.com/features/actions) set up to run tests and linting on push
+* [graphql-js](https://github.com/graphql/graphql-js) - a JavaScript GraphQL runtime.
+* [DataLoader](https://github.com/graphql/dataloader) - for coalescing and caching fetches.
+* [express-graphql](https://github.com/graphql/express-graphql) - to provide HTTP access to GraphQL.
+* [aws-serverless-express](https://github.com/awslabs/aws-serverless-express) - to use `express-graphql` on aws lambda.
+* [GraphiQL](https://github.com/graphql/graphiql) - for easy exploration of this GraphQL server.
 
-## Running the app
+Try it out at: http://graphql.org/swapi-graphql
 
-```
-# install dependencies
+[![Deploy to Heroku](https://www.herokucdn.com/deploy/button.svg)](https://heroku.com/deploy)
+[![Deploy to now](https://deploy.now.sh/static/button.svg)](https://deploy.now.sh/?repo=https://github.com/graphql/swapi-graphql)
+
+## Getting Started
+
+Install dependencies with
+
+```sh
 npm install
-
-# run in dev mode on port 3000
-npm run dev
-
-# generate production build
-npm run build
-
-# run generated content in dist folder on port 3000
-npm run start
 ```
 
-## Testing
+## SWAPI Wrapper
 
-### Jest with supertest
+The SWAPI wrapper is in `./swapi`. It can be tested with:
 
+```sh
+yarn test
 ```
-npm run test
+
+## Local Server
+
+A local express server is in `./server`. It can be run with:
+
+```sh
+npm start
 ```
 
-## Linting
+A GraphiQL instance will be opened at http://localhost:8080/ (or similar; the actual port number will be printed to the console) to explore the API.
 
-```
-# run linter
-npm run lint
+# Contributing to this repo
 
-# fix lint issues
-npm run lint:fix
-```
+This repository is managed by EasyCLA. Project participants must sign the free ([GraphQL Specification Membership agreement](https://preview-spec-membership.graphql.org) before making a contribution. You only need to do this one time, and it can be signed by [individual contributors](http://individual-spec-membership.graphql.org/) or their [employers](http://corporate-spec-membership.graphql.org/).
+
+To initiate the signature process please open a PR against this repo. The EasyCLA bot will block the merge if we still need a membership agreement from you.
+
+You can find [detailed information here](https://github.com/graphql/graphql-wg/tree/main/membership). If you have issues, please email [operations@graphql.org](mailto:operations@graphql.org).
+
+If your company benefits from GraphQL and you would like to provide essential financial support for the systems and people that power our community, please also consider membership in the [GraphQL Foundation](https://foundation.graphql.org/join).

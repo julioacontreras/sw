@@ -1,5 +1,6 @@
 <template>
   <section class="section">
+    <Carousel />
     <div class="columns is-mobile">
       <card
         title="Free"
@@ -42,12 +43,14 @@
 
 <script>
 import Card from '~/components/Card'
+import Carousel from '~/components/Carousel'
 
 export default {
   name: 'HomePage',
 
   components: {
-    Card
+    Card,
+    Carousel
   }
 }
 </script>

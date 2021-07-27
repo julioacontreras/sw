@@ -1,13 +1,18 @@
+const packageJSON = require('./package.json');
+
+process.env.TZ = 'UTC';
+
 module.exports = {
-  globals: {
-    "ts-jest": {
-      tsconfig: "tsconfig.json",
-    },
-  },
-  moduleFileExtensions: ["ts", "js"],
+  verbose: true,
+  name: packageJSON.name,
+  displayName: packageJSON.name,
   transform: {
-    "^.+\\.(ts|tsx)$": "ts-jest",
+    '\\.[jt]sx?$': 'babel-jest',
   },
-  testMatch: ["**/test/**/*.spec.(ts|js)"],
-  testEnvironment: "node",
+  moduleFileExtensions: ['ts', 'tsx', 'js', 'jsx', 'json', 'node'],
+  testURL: 'http://localhost',
+  transformIgnorePatterns: ['[/\\\\]node_modules[/\\\\].+\\.(js|jsx)$'],
+  testMatch: ['**/*.(spec|test).js'],
+  collectCoverage: true,
+  coverageDirectory: './coverage/',
 };
