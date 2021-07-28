@@ -1,3 +1,4 @@
+require('dotenv').config()
 const app = require('./service');
 
 // Listen for incoming HTTP requests

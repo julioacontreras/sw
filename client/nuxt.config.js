@@ -2,6 +2,10 @@ export default {
   // Disable server-side rendering: https://go.nuxtjs.dev/ssr-mode
   ssr: false,
 
+  env: {
+    apiUrl: process.env.API_URL || 'http://localhost:4000'
+  },
+
   // Target: https://go.nuxtjs.dev/config-target
   target: 'static',
 
@@ -37,7 +41,8 @@ export default {
   buildModules: [
     // https://go.nuxtjs.dev/typescript
     '@nuxt/typescript-build',
-    '@nuxtjs/composition-api/module'
+    '@nuxtjs/composition-api/module',
+    'pinia/nuxt'
   ],
 
   // Modules: https://go.nuxtjs.dev/config-modules
@@ -45,7 +50,8 @@ export default {
     // https://go.nuxtjs.dev/buefy
     'nuxt-buefy',
     // https://go.nuxtjs.dev/axios
-    '@nuxtjs/axios'
+    '@nuxtjs/axios',
+    '@nuxtjs/apollo'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -53,5 +59,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+  },
+
+  apollo: {
+    clientConfigs: {
+      default: {
+        httpEndpoint: 'http://localhost:4000'
+      }
+    }
   }
 }
