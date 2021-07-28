@@ -26,10 +26,6 @@ export default {
     ]
   },
 
-  // Global CSS: https://go.nuxtjs.dev/config-css
-  css: [
-  ],
-
   // Plugins to run before rendering page: https://go.nuxtjs.dev/config-plugins
   plugins: [
   ],
@@ -59,6 +55,13 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    postcss: {
+      plugins: {
+        autoprefixer: {},
+        'postcss-nested': {},
+        'flex-gap-polyfill': {}
+      }
+    }
   },
 
   apollo: {
@@ -67,5 +70,14 @@ export default {
         httpEndpoint: 'http://localhost:4000'
       }
     }
-  }
+  },
+
+  buefy: {
+    css: false
+  },
+
+  // Global CSS: https://go.nuxtjs.dev/config-css
+  css: [
+    '~/assets/scss/main'
+  ]
 }

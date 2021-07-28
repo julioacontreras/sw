@@ -1,5 +1,5 @@
 <template>
-  <section class="section">
+  <section>
     <Carousel />
     <div class="columns is-mobile">
       <card title="Free" icon="github">
