@@ -47,7 +47,8 @@ export default {
     'nuxt-buefy',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/apollo'
+    '@nuxtjs/apollo',
+    '@nuxtjs/style-resources'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -55,12 +56,28 @@ export default {
 
   // Build Configuration: https://go.nuxtjs.dev/config-build
   build: {
+    extractCSS: true,
     postcss: {
-      plugins: {
-        autoprefixer: {},
-        'postcss-nested': {},
-        'flex-gap-polyfill': {}
-      }
+      plugins:
+      process.env.NODE_ENV === 'production'
+        ? [
+            'postcss-flexbugs-fixes',
+            [
+              'postcss-preset-env',
+              {
+                autoprefixer: {
+                  flexbox: 'no-2009'
+                },
+                stage: 3,
+                features: {
+                  'custom-properties': false
+                }
+              }
+            ]
+          ]
+        : [
+          // No transformations in development
+          ]
     }
   },
 
@@ -79,5 +96,11 @@ export default {
   // Global CSS: https://go.nuxtjs.dev/config-css
   css: [
     '~/assets/scss/main'
-  ]
+  ],
+
+  styleResources: {
+    scss: [
+      '~/assets/scss/variables'
+    ]
+  }
 }

@@ -1,7 +1,7 @@
 <template>
   <div>
     <nav
-      class="navbar header is-primary"
+      class="navbar header is-spaced is-primary"
       role="navigation"
       aria-label="main navigation"
     >
@@ -11,17 +11,11 @@
           href="/"
         >
           <img
-            src="~assets/buefy.png"
-            alt="Buefy"
-            height="28"
+            src="/assets/img/logo.png"
+            alt="Star Wars Logotype"
+            height="42"
           >
         </a>
-
-        <div class="navbar-burger">
-          <span />
-          <span />
-          <span />
-        </div>
       </div>
     </nav>
 
@@ -35,21 +29,5 @@
 
 <script>
 export default {
-  data () {
-    return {
-      items: [
-        {
-          title: 'Home',
-          icon: 'home',
-          to: { name: 'index' }
-        },
-        {
-          title: 'Inspire',
-          icon: 'lightbulb',
-          to: { name: 'inspire' }
-        }
-      ]
-    }
-  }
 }
 </script>

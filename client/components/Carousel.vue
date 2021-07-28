@@ -1,12 +1,12 @@
 <template>
   <b-carousel>
-    <b-carousel-item v-for="(carousel, i) in carousels" :key="i">
+    <b-carousel-item v-for="(carousel, index) in carousels" :key="'carousel' + index">
       <section :class="`hero is-medium is-${carousel.color}`">
-        <div class="hero-body has-text-centered">
-          <h1 class="title">
-            {{ carousel.text }}
-          </h1>
-        </div>
+        <img
+          :src="carousel.img"
+          :alt="carousel.title"
+          height="28"
+        >
       </section>
     </b-carousel-item>
   </b-carousel>
@@ -16,19 +16,17 @@
 import { defineComponent, ref } from '@nuxtjs/composition-api'
 
 interface CarouselType {
-  text: string;
-  color: string;
+  title: string;
+  img: string;
 }
 
 export default defineComponent({
   name: 'Carousel',
   setup () {
     const carousels = ref<CarouselType[]>([
-      { text: 'Slide 1', color: 'primary' },
-      { text: 'Slide 2', color: 'info' },
-      { text: 'Slide 3', color: 'success' },
-      { text: 'Slide 4', color: 'warning' },
-      { text: 'Slide 5', color: 'danger' }
+      { title: 'Slide 1', img: '/assets/img/screens/screen.1.jpg' },
+      { title: 'Slide 2', img: '/assets/img/screens/screen.2.jpg' },
+      { title: 'Slide 3', img: '/assets/img/screens/screen.3.jpg' }
     ])
 
     return {
