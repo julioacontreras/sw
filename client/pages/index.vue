@@ -5,34 +5,50 @@
   </section>
 </template>
 
-<script>
-import ListPeople from '~/components/ListPeople'
-import Carousel from '~/components/Carousel'
-import AllPeopleGQL from '~/apollo/queries/allPeople.gql'
+<script lang="ts">
+import { watch, defineComponent, onMounted } from '@nuxtjs/composition-api';
+import { useQuery } from '@vue/apollo-composable'
 
-export default {
+import { usePeopleStore } from '../store/people'
+
+import ListPeople from '~/components/ListPeople.vue'
+import Carousel from '~/components/Carousel.vue'
+import ALL_PEOPLE_GQL from '~/apollo/queries/allPeople.gql'
+
+interface AllPeopleType {
+  allPeople: {
+    people: []
+  }
+}
+
+export default defineComponent({
   name: 'HomePage',
   components: {
     ListPeople,
     Carousel
   },
-  data () {
+  setup () {
+    const store = usePeopleStore()
+
+    onMounted(() => {
+      try {
+        const { result } = useQuery<AllPeopleType>(ALL_PEOPLE_GQL)
+        console.log(result.value)
+        const data = result.value as AllPeopleType
+        console.log(data)
+      } catch (error) {
+        // eslint-disable-next-line no-console
+        console.error(error)
+      }
+    })
+
+    watch(store.collection.people, (value) => {
+      return value
+    })
+
     return {
-      loading: false,
-      people: []
-    }
-  },
-  async mounted () {
-    try {
-      const response = await this.$apollo.query({
-        query: AllPeopleGQL,
-        variables: {}
-      })
-      this.people = response.data.allPeople.people
-    } catch (error) {
-      // eslint-disable-next-line no-console
-      console.error(error)
+      onMounted
     }
   }
-}
+})
 </script>

@@ -1306,7 +1306,11 @@ export type Unnamed_1_Query = (
   { __typename?: 'Root' }
   & { allPeople?: Maybe<(
     { __typename?: 'PeopleConnection' }
-    & { people?: Maybe<Array<Maybe<(
+    & Pick<PeopleConnection, 'totalCount'>
+    & { pageInfo: (
+      { __typename?: 'PageInfo' }
+      & Pick<PageInfo, 'hasNextPage' | 'hasPreviousPage' | 'startCursor' | 'endCursor'>
+    ), people?: Maybe<Array<Maybe<(
       { __typename?: 'Person' }
       & Pick<Person, 'name' | 'height' | 'mass' | 'hairColor' | 'skinColor' | 'eyeColor' | 'birthYear' | 'gender' | 'created' | 'edited'>
       & { homeworld?: Maybe<(

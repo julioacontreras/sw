@@ -1,5 +1,12 @@
 {
-  allPeople {
+  allPeople {  
+    pageInfo {
+      hasNextPage,
+      hasPreviousPage,
+      startCursor,
+      endCursor
+    },
+    totalCount,
     people {
       name,
       height,

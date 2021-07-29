@@ -14,7 +14,7 @@ export function peopleTransformer (response: ResponsePeople | undefined): Collec
     count: response.data.count,
     next: response.data.next,
     previous: response.data.previous,
-    results: list
+    people: list
   }
 }
 

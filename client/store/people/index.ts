@@ -1,5 +1,4 @@
 import { defineStore } from 'pinia'
-// import { getCollectionPeople } from '../../plugins/api/getCollectionPeople'
 import { CollectionPeopleType } from '../../types/CollectionPeopleType'
 import { State } from './state'
 
@@ -8,7 +7,7 @@ const state: State = {
     count: 0,
     next: null,
     previous: null,
-    results: []
+    people: []
   } as CollectionPeopleType
 }
 
@@ -18,8 +17,13 @@ export const usePeopleStore = defineStore({
   id: 'people',
   state: () => state,
   actions: {
-    load () {
-      // this.collection = getCollectionPeople()
+    setCollection (collection: CollectionPeopleType): void {
+      this.collection = collection
+    }
+  },
+  getters: {
+    havePeople (): boolean {
+      return this.collection.people.length > 0
     }
   }
 })
