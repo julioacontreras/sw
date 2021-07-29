@@ -8,6 +8,7 @@
     },
     totalCount,
     people {
+      id,
       name,
       height,
       mass,

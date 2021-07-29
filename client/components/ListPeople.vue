@@ -1,9 +1,9 @@
 <template>
-  <div class="columns is-mobile">
+  <div class="columnsList">
     <CardPeople
       v-for="(person, index) in people"
       :key="'cardPeople' + index"
-      :title="person.name"
+      v-bind="person"
       icon="cellphone-link"
     >
       {{ person.description }}
@@ -26,3 +26,10 @@ export default {
   }
 }
 </script>
+
+<style scoped>
+.columnsList {
+  display: grid;
+  grid-template-columns: 1fr 1fr 1fr;
+}
+</style>

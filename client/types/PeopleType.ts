@@ -1,4 +1,6 @@
 export interface PeopleType {
+  image: string,
+  id: string;
   name: string;
   height: number;
   mass: number;

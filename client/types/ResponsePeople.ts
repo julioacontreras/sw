@@ -1,4 +1,5 @@
 export interface ItemData {
+  id: string;
   name: string;
   height: number;
   mass: number;

@@ -1,8 +1,32 @@
+import { useQuery } from '@vue/apollo-composable'
+
 import { defineStore } from 'pinia'
 import { CollectionPeopleType } from '../../types/CollectionPeopleType'
-import { State } from './state'
+import { PeopleType } from '../../types/PeopleType'
+import { State, PersonImage } from './state'
+import ALL_PEOPLE_GQL from '~/apollo/queries/allPeople.gql'
+
+interface AllPeopleType {
+  allPeople: {
+    people: []
+  }
+}
 
 const state: State = {
+  images: [
+    {
+      id: 'cGVvcGxlOjE=',
+      image: '/assets/img/people/person.3.png'
+    },
+    {
+      id: 'cGVvcGxlOjM=',
+      image: '/assets/img/people/person.1.png'
+    },
+    {
+      id: 'cGVvcGxlOjQ=',
+      image: '/assets/img/people/person.2.png'
+    }
+  ],
   collection: {
     count: 0,
     next: null,
@@ -17,7 +41,31 @@ export const usePeopleStore = defineStore({
   id: 'people',
   state: () => state,
   actions: {
+    loadPeople () {
+      const { result } = useQuery<AllPeopleType>(ALL_PEOPLE_GQL)
+      setTimeout(() => {
+        const data = result.value as AllPeopleType
+        this.setCollection({
+          count: 0,
+          next: null,
+          previous: null,
+          people: data.allPeople.people
+        })
+      }, 1000)
+    },
     setCollection (collection: CollectionPeopleType): void {
+      collection.people.map((person: PeopleType) => {
+        let image: string = ''
+        this.images.forEach((elImage: PersonImage) => {
+          if (elImage.id === person.id) {
+            image = elImage.image
+          }
+        })
+        if (image) {
+          person.image = image
+        }
+        return person
+      })
       this.collection = collection
     }
   },

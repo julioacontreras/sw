@@ -3,8 +3,14 @@
     <div class="card-image">
       <figure class="image is-4by3">
         <img
+          v-if="!image"
           src="https://bulma.io/images/placeholders/1280x960.png"
-          :alt="title"
+          :alt="name"
+        >
+        <img
+          v-if="image"
+          :src="image"
+          :alt="name"
         >
       </figure>
     </div>
@@ -12,7 +18,7 @@
       <div class="media">
         <div class="media-content">
           <p class="title is-4">
-            {{ title }}
+            {{ name }}
           </p>
           <p class="subtitle is-6">
             #charactar #sw
@@ -38,13 +44,25 @@
 <script>
 export default {
   props: {
-    title: {
+    name: {
       type: String,
       required: true
     },
-    icon: {
+    birthYear: {
       type: String,
       required: true
+    },
+    gender: {
+      type: String,
+      required: true
+    },
+    hairColor: {
+      type: String,
+      required: true
+    },
+    image: {
+      type: String,
+      default: ''
     }
   }
 }
