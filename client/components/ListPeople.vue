@@ -1,30 +1,48 @@
 <template>
-  <div class="columnsList">
-    <CardPeople
-      v-for="(person, index) in people"
-      :key="'cardPeople' + index"
-      v-bind="person"
-      icon="cellphone-link"
-    >
-      {{ person.description }}
-    </CardPeople>
+  <div>
+    <div class="container mx-auto grid gap-4 sm:grid-cols-3 md:grid-cols-3 pt-6">
+      <CardPeople
+        v-for="(person, index) in people"
+        :key="'cardPeople' + index"
+        v-bind="person"
+        icon="cellphone-link"
+        class="is-1"
+      >
+        {{ person.description }}
+      </CardPeople>
+    </div>
+    <Pagination @change="changePagination" />
   </div>
 </template>
 
-<script>
-import CardPeople from '~/components/CardPeople'
+<script lang="ts">
+import { defineComponent, onMounted, computed } from '@nuxtjs/composition-api'
+import { usePeopleStore } from '../store/people'
+import CardPeople from './CardPeople.vue'
+import Pagination from './Pagination.vue'
 
-export default {
+export default defineComponent({
   components: {
-    CardPeople
+    CardPeople,
+    Pagination
   },
-  props: {
-    people: {
-      type: Array,
-      default: () => {}
+  setup () {
+    const store = usePeopleStore()
+    onMounted(() => {
+      store.loadPeople(9)
+    })
+    return {
+      people: computed(() => store.collection.people),
+      onMounted
+    }
+  },
+  methods: {
+    changePagination (settings: any) {
+      // store.collection
+      console.log(settings)
     }
   }
-}
+})
 </script>
 
 <style scoped>

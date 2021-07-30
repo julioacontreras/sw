@@ -1,3 +1,9 @@
+/* purgecss start ignore */
+@import 'tailwindcss/base';
+@import 'tailwindcss/components';
+/* purgecss end ignore */
+@import 'tailwindcss/utilities';
+
 // Import Bulma's core
 @import "~bulma/sass/utilities/_all";
 

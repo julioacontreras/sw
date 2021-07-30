@@ -41,8 +41,11 @@ export const usePeopleStore = defineStore({
   id: 'people',
   state: () => state,
   actions: {
-    loadPeople () {
-      const { result } = useQuery<AllPeopleType>(ALL_PEOPLE_GQL)
+    loadPeople (first: number, nextCursor?: string) {
+      const { result } = useQuery<AllPeopleType, any>(ALL_PEOPLE_GQL, {
+        first,
+        after: nextCursor
+      })
       setTimeout(() => {
         const data = result.value as AllPeopleType
         this.setCollection({

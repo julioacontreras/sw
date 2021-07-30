@@ -1,5 +1,5 @@
-{
-  allPeople {  
+query InputsVars ($first: Int!, $nextCursor: String) {
+  allPeople (first: $first, after: $nextCursor) {  
     pageInfo {
       hasNextPage,
       hasPreviousPage,
