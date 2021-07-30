@@ -1,6 +1,6 @@
 <template>
   <div>
-    <div class="container mx-auto grid gap-4 sm:grid-cols-3 md:grid-cols-3 pt-6">
+    <div class="container mx-auto grid gap-6 sm:grid-cols-3 md:grid-cols-3 pt-6">
       <CardPeople
         v-for="(person, index) in people"
         :key="'cardPeople' + index"
