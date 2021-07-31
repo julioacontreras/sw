@@ -6,9 +6,8 @@
 </template>
 
 <script lang="ts">
-import { defineComponent, computed } from '@nuxtjs/composition-api'
+import { defineComponent, computed, onMounted } from '@nuxtjs/composition-api'
 import { usePeopleStore } from '../store/people'
-import { PeopleType } from '../types/PeopleType'
 
 export default defineComponent({
   props: {
@@ -20,16 +19,21 @@ export default defineComponent({
   setup (props) {
     // store people
     const store = usePeopleStore()
-    // set in store person
-    const person = store.collection.people.find(person => person.id === props.id) as PeopleType | null
-    console.log({ people: store.collection.people })
-    console.log({ person })
-    if (person) {
-      store.setPersonSelected(person)
-    }
+    // find and set in store person
+    onMounted(() => {
+      if (!store.isLoad) {
+        store.executeWhenIsReadyToUse = () => {
+          store.refetchPersonSelected(props.id)
+        }
+      } else {
+        store.refetchPersonSelected(props.id)
+      }
+    })
     return {
       // computed
-      personSelected: computed(() => store.personSelected)
+      personSelected: computed(() => store.personSelected),
+      // event
+      onMounted
     }
   }
 })

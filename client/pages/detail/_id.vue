@@ -1,7 +1,7 @@
 <template>
   <section class="container mx-auto">
     <Breadcrumbs :routes="routes" />
-    <DetailPeople :id="id" />
+    <DetailPeople :id="$route.params.id" />
   </section>
 </template>
 
@@ -37,9 +37,6 @@ export default {
         }
       ]
     }
-  },
-  mounted () {
-    this.id = this.$route.params.id
   }
 }
 </script>

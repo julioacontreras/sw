@@ -22,6 +22,8 @@ interface AllPeopleType {
 }
 
 const state: State = {
+  isLoad: false,
+  executeWhenIsReadyToUse: null,
   refetch: null,
   perPageDefault: 12,
   personSelected: null,
@@ -59,9 +61,26 @@ export interface ParamsLoadPeople {
 export const StateInterface = state
 
 export const usePeopleStore = defineStore({
-  id: 'people',
+  id: 'people', // internal name store
   state: () => state,
   actions: {
+    refetchPersonSelected (id: string): void {
+      const people = this.collection.people
+      let result: PeopleType | null = null
+      for (const person of people) {
+        if (person.id === id) {
+          result = person
+        }
+      }
+      if (result) {
+        this.setPersonSelected(result)
+      }
+    },
+    isReadyToUse () {
+      if (this.executeWhenIsReadyToUse) {
+        this.executeWhenIsReadyToUse()
+      }
+    },
     setPersonSelected (person: PeopleType) {
       this.personSelected = person
     },
@@ -92,6 +111,8 @@ export const usePeopleStore = defineStore({
             if (this.collection.people.length > 0) {
               this.setPersonSelected(this.collection.people[0])
             }
+            this.isLoad = true
+            this.isReadyToUse()
             resolve(true)
           })
         } catch (error) {

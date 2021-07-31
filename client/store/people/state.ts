@@ -8,7 +8,9 @@ export interface PersonImage {
 
 // define State
 export interface State {
-  perPageDefault: number,
+  isLoad: boolean;
+  executeWhenIsReadyToUse: any;
+  perPageDefault: number;
   images: PersonImage[];
   collection: CollectionPeopleType;
   refetch: any;
