@@ -18,6 +18,7 @@ interface AllPeopleType {
       hasPreviousPage: boolean;
     },
     people: []
+    peopleFull: []
   }
 }
 
@@ -46,6 +47,7 @@ const state: State = {
     next: null,
     previous: null,
     people: [],
+    peopleFull: [],
     hasNext: false,
     hasPrevious: false
   } as CollectionPeopleType
@@ -64,6 +66,20 @@ export const usePeopleStore = defineStore({
   id: 'people', // internal name store
   state: () => state,
   actions: {
+    clearSearch (): void {
+      this.collection.people = Object.assign([], this.collection.peopleFull)
+    },
+    searchPeopleByText (text: string): void {
+      this.clearSearch()
+      const result: PeopleType[] = []
+      const peopleFull = this.collection.peopleFull
+      for (const person of peopleFull) {
+        if (person.name.toLocaleLowerCase().includes(text)) {
+          result.push(person)
+        }
+      }
+      this.collection.people = result
+    },
     refetchPersonSelected (id: string): void {
       const people = this.collection.people
       let result: PeopleType | null = null
@@ -82,7 +98,7 @@ export const usePeopleStore = defineStore({
       }
     },
     setPersonSelected (person: PeopleType) {
-      this.personSelected = person
+      this.personSelected = Object.assign({}, person)
     },
     loadPeople (settings: ParamsLoadPeople) {
       return new Promise((resolve, reject) => {
@@ -106,7 +122,8 @@ export const usePeopleStore = defineStore({
               previous: data.allPeople.pageInfo.startCursor,
               hasNext: data.allPeople.pageInfo.hasNextPage,
               hasPrevious: data.allPeople.pageInfo.hasPreviousPage,
-              people: data.allPeople.people
+              people: data.allPeople.people,
+              peopleFull: Object.assign([], data.allPeople.people)
             })
             if (this.collection.people.length > 0) {
               this.setPersonSelected(this.collection.people[0])

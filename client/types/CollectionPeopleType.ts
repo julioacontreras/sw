@@ -7,4 +7,5 @@ export interface CollectionPeopleType {
   hasNext: boolean;
   hasPrevious: boolean;
   people: PeopleType[];
+  peopleFull: PeopleType[];
 }
