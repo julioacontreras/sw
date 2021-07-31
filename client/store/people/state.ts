@@ -9,4 +9,5 @@ export interface PersonImage {
 export interface State {
   images: PersonImage[];
   collection: CollectionPeopleType;
+  refetch: any;
 }

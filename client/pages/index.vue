@@ -1,7 +1,7 @@
 <template>
   <section>
     <Carousel />
-    <ListPeople />
+    <ListPeople :per-page="12" />
   </section>
 </template>
 
