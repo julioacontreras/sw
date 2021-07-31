@@ -16,7 +16,7 @@ export default {
   },
   data () {
     return {
-      id: 0,
+      id: '',
       routes: [
         {
           label: 'Home',

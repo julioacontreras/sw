@@ -47,7 +47,37 @@
   </div>
 </template>
 
-<script>
-export default {
-}
+<script lang="ts">
+import { defineComponent, onMounted } from '@nuxtjs/composition-api'
+import { usePeopleStore } from '../store/people'
+import Log from '../plugins/log'
+
+export default defineComponent({
+  setup () {
+    // store people
+    const store = usePeopleStore()
+
+    // -----------------
+    // methods
+
+    const loadPeople = async () => {
+      try {
+        await store.loadPeople({ first: store.perPageDefault })
+      } catch (error) {
+        Log.error(error)
+      }
+    }
+
+    // -----------------
+    // events
+
+    onMounted(async () => {
+      await loadPeople()
+    })
+    return {
+      // mounted
+      onMounted
+    }
+  }
+})
 </script>

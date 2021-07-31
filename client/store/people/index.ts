@@ -23,6 +23,8 @@ interface AllPeopleType {
 
 const state: State = {
   refetch: null,
+  perPageDefault: 12,
+  personSelected: null,
   images: [
     {
       id: 'cGVvcGxlOjE=',
@@ -60,6 +62,9 @@ export const usePeopleStore = defineStore({
   id: 'people',
   state: () => state,
   actions: {
+    setPersonSelected (person: PeopleType) {
+      this.personSelected = person
+    },
     loadPeople (settings: ParamsLoadPeople) {
       return new Promise((resolve, reject) => {
         try {
@@ -84,6 +89,9 @@ export const usePeopleStore = defineStore({
               hasPrevious: data.allPeople.pageInfo.hasPreviousPage,
               people: data.allPeople.people
             })
+            if (this.collection.people.length > 0) {
+              this.setPersonSelected(this.collection.people[0])
+            }
             resolve(true)
           })
         } catch (error) {

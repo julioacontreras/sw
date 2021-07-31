@@ -2,7 +2,7 @@
   <section>
     <Carousel />
     <div class="container mx-auto">
-      <ListPeople :per-page="12" />
+      <ListPeople />
     </div>
   </section>
 </template>

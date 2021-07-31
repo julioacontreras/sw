@@ -8,7 +8,6 @@
         icon="cellphone-link"
         class="is-1"
       />
-      {{ person }}
     </div>
     <Pagination
       ref="pagination"
@@ -38,13 +37,7 @@ export default defineComponent({
     CardPeople,
     Pagination
   },
-  props: {
-    perPage: {
-      type: Number,
-      default: 12
-    }
-  },
-  setup (props) {
+  setup () {
     // this value enter in `return` and in function `onMounted`
     // come with params component Pagination
     const pagination = ref(null)
@@ -70,21 +63,12 @@ export default defineComponent({
       }
     }
 
-    const loadPeople = async () => {
-      try {
-        await store.loadPeople({ first: props.perPage })
-        updateButtonsPagination({ page: 1, hasPrevious: false, hasNext: true })
-      } catch (error) {
-        Log.error(error)
-      }
-    }
-
     const changePagination = async (settings: SettingsPaginationType) => {
       if (settings.button === 'next') {
-        await store.refetchPeople({ first: props.perPage, after: store.collection.next! })
+        await store.refetchPeople({ first: store.perPageDefault, after: store.collection.next! })
       } else
       if (settings.button === 'prev') {
-        await store.refetchPeople({ last: props.perPage, before: store.collection.previous! })
+        await store.refetchPeople({ last: store.perPageDefault, before: store.collection.previous! })
       }
       updateButtonsPagination(settings)
     }
@@ -92,18 +76,18 @@ export default defineComponent({
     // -----------------
     // events
 
-    onMounted(async () => {
-      await loadPeople()
+    onMounted(() => {
+      updateButtonsPagination({ page: 1, hasPrevious: false, hasNext: true })
     })
     return {
       // $refs
       pagination,
       // methods to use in html
-      loadPeople,
       changePagination,
       // computed
       people: computed(() => store.collection.people),
       total: computed(() => store.collection.count),
+      perPage: computed(() => store.perPageDefault),
       // mounted
       onMounted
     }

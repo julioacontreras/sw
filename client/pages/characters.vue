@@ -1,7 +1,7 @@
 <template>
   <section class="container mx-auto">
     <Breadcrumbs :routes="routes" />
-    <ListPeople :per-page="12" />
+    <ListPeople />
   </section>
 </template>
 
