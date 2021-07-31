@@ -8,6 +8,7 @@
         icon="cellphone-link"
         class="is-1"
       />
+      {{ person }}
     </div>
     <Pagination
       ref="pagination"

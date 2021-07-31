@@ -25,6 +25,12 @@ export default {
           active: true
         },
         {
+          label: 'Characters',
+          to: '/characters',
+          symbol: '/',
+          active: true
+        },
+        {
           label: 'Detail',
           symbol: '',
           active: false

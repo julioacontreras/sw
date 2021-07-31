@@ -17,9 +17,11 @@
     <div class="card-content">
       <div class="media">
         <div class="media-content">
-          <p class="title is-4">
-            {{ name }}
-          </p>
+          <div>
+            <nuxt-link :to="`/detail/${id}`" class="title is-4">
+              {{ name }}
+            </nuxt-link>
+          </div>
           <p class="subtitle is-6">
             #charactar #sw
           </p>
@@ -44,6 +46,10 @@
 <script>
 export default {
   props: {
+    id: {
+      type: String,
+      required: true
+    },
     name: {
       type: String,
       required: true
