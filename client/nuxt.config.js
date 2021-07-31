@@ -50,8 +50,7 @@ export default {
     'nuxt-buefy',
     // https://go.nuxtjs.dev/axios
     '@nuxtjs/axios',
-    '@nuxtjs/apollo',
-    '@nuxtjs/style-resources'
+    '@nuxtjs/apollo'
   ],
 
   // Axios module configuration: https://go.nuxtjs.dev/config-axios
@@ -100,12 +99,6 @@ export default {
   css: [
     '~/assets/scss/main'
   ],
-
-  styleResources: {
-    scss: [
-      '~/assets/scss/variables'
-    ]
-  },
 
   tailwindcss: {
     viewer: false

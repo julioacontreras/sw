@@ -17,6 +17,11 @@
           >
         </a>
       </div>
+      <div class="flex flex-grow justify-end items-center">
+        <nuxt-link to="/characters" class="link-invert">
+          Characters
+        </nuxt-link>
+      </div>
     </nav>
 
     <section>
