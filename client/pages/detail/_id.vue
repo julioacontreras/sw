@@ -1,21 +1,22 @@
 <template>
   <section class="container mx-auto">
     <Breadcrumbs :routes="routes" />
-    <ListPeople :per-page="12" />
+    <DetailPeople :id="id" />
   </section>
 </template>
 
 <script>
-import ListPeople from '../components/ListPeople.vue'
-import Breadcrumbs from '../components/Breadcrumbs.vue'
+import DetailPeople from '../../components/DetailPeople.vue'
+import Breadcrumbs from '../../components/Breadcrumbs.vue'
 
 export default {
   components: {
-    ListPeople,
+    DetailPeople,
     Breadcrumbs
   },
   data () {
     return {
+      id: 0,
       routes: [
         {
           label: 'Home',
@@ -24,12 +25,15 @@ export default {
           active: true
         },
         {
-          label: 'Characters',
+          label: 'Detail',
           symbol: '',
           active: false
         }
       ]
     }
+  },
+  mounted () {
+    this.id = this.$route.params.id
   }
 }
 </script>

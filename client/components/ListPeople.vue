@@ -1,5 +1,5 @@
 <template>
-  <div class="container mx-auto">
+  <div>
     <div class="grid gap-6 sm:grid-cols-3 md:grid-cols-4 pt-6">
       <CardPeople
         v-for="(person, index) in people"

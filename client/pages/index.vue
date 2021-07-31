@@ -1,7 +1,9 @@
 <template>
   <section>
     <Carousel />
-    <ListPeople :per-page="12" />
+    <div class="container mx-auto">
+      <ListPeople :per-page="12" />
+    </div>
   </section>
 </template>
 
@@ -11,7 +13,6 @@ import ListPeople from '../components/ListPeople.vue'
 import Carousel from '../components/Carousel.vue'
 
 export default defineComponent({
-  name: 'HomePage',
   components: {
     ListPeople,
     Carousel

@@ -27,7 +27,8 @@
     "nuxt": "^2.15.7",
     "nuxt-buefy": "^0.4.8",
     "pinia": "^0.5.2",
-    "vue-apollo": "^3.0.7"
+    "vue-apollo": "^3.0.7",
+    "vue-bulma-breadcrumb": "^1.0.1"
   },
   "devDependencies": {
     "@babel/eslint-parser": "^7.14.7",

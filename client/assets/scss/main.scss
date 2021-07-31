@@ -16,3 +16,19 @@
 .link-invert {
   color: $primary-invert;
 }
+
+.link-invert:hover {
+  color: $primary-dark;
+}
+
+.bg-primary {
+  background-color: $primary;
+}
+
+.screen {
+  min-height: 100vh;
+}
+
+.text-primary-invert {
+  color: $primary-invert;
+}
