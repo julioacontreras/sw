@@ -25,10 +25,28 @@
   background-color: $primary;
 }
 
+.bg-primary-invert {
+  background-color: $primary-invert;
+}
+
+.pagination-link {
+  background-color: $primary-invert;
+}
+
+
+.text-primary-invert {
+  color: $primary-invert;
+}
+
 .screen {
   min-height: 100vh;
 }
 
 .text-primary-invert {
+  color: $primary-invert;
+}
+
+body {
+  background-color: $primary;
   color: $primary-invert;
 }

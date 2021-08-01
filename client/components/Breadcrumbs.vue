@@ -8,7 +8,7 @@
         v-if="route.active"
         :to="route.to"
         :aria-label="route.label"
-        class="inline"
+        class="inline link-invert"
       >
         {{ route.label }}
       </nuxt-link>
