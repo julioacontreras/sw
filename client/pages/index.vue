@@ -3,19 +3,21 @@
     <Carousel />
     <div class="container mx-auto">
       <ListPeople />
+      <DetailPeople />
     </div>
   </section>
 </template>
 
-<script lang="ts">
-import { defineComponent } from '@nuxtjs/composition-api'
+<script>
 import ListPeople from '../components/ListPeople.vue'
 import Carousel from '../components/Carousel.vue'
+import DetailPeople from '../components/DetailPeople.vue'
 
-export default defineComponent({
+export default {
   components: {
     ListPeople,
-    Carousel
+    Carousel,
+    DetailPeople
   }
-})
+}
 </script>

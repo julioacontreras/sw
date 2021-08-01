@@ -3,7 +3,8 @@ import { PeopleType } from '../../types/PeopleType'
 
 export interface PersonImage {
   id: string;
-  image: string;
+  small: string;
+  big: string;
 }
 
 // define State

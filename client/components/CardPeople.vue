@@ -3,13 +3,13 @@
     <div class="card-image">
       <figure class="image is-4by3">
         <img
-          v-if="!image"
+          v-if="!imageSmall"
           src="https://bulma.io/images/placeholders/1280x960.png"
           :alt="name"
         >
         <img
-          v-if="image"
-          :src="image"
+          v-if="imageSmall"
+          :src="imageSmall"
           :alt="name"
         >
       </figure>
@@ -66,7 +66,7 @@ export default {
       type: String,
       required: true
     },
-    image: {
+    imageSmall: {
       type: String,
       default: ''
     }

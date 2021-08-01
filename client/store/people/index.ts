@@ -31,15 +31,18 @@ const state: State = {
   images: [
     {
       id: 'cGVvcGxlOjE=',
-      image: '/assets/img/people/person.3.png'
+      small: '/assets/img/people/luke.png',
+      big: '/assets/img/people/luke.png'
     },
     {
       id: 'cGVvcGxlOjM=',
-      image: '/assets/img/people/person.1.png'
+      small: '/assets/img/people/r2d2-small.png',
+      big: '/assets/img/people/r2d2-big.png'
     },
     {
       id: 'cGVvcGxlOjQ=',
-      image: '/assets/img/people/person.2.png'
+      small: '/assets/img/people/darth-vader.png',
+      big: '/assets/img/people/darth-vader.png'
     }
   ],
   collection: {
@@ -150,14 +153,19 @@ export const usePeopleStore = defineStore({
     },
     setCollection (collection: CollectionPeopleType): void {
       collection.people.map((person: PeopleType) => {
-        let image: string = ''
+        let small: string = ''
+        let big: string = ''
         this.images.forEach((elImage: PersonImage) => {
           if (elImage.id === person.id) {
-            image = elImage.image
+            small = elImage.small
+            big = elImage.big
           }
         })
-        if (image) {
-          person.image = image
+        if (small) {
+          person.imageSmall = small
+        }
+        if (big) {
+          person.imageBig = big
         }
         return person
       })
