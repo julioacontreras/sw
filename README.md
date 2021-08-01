@@ -17,7 +17,7 @@ More:
 
 ### Starting server
 
-create `.env` and put this `PORT=4000`
+in `./server` create file `.env` and put this `PORT=4000`
 
 ```bash
     cd server
@@ -26,7 +26,7 @@ create `.env` and put this `PORT=4000`
 ```
 ### Starting client
 
-create `.env` and put this `API_URL=http://localhost:4000`
+in `./client` create file `.env` and put this `API_URL=http://localhost:4000`
 
 ```bash
     cd client
