@@ -13,6 +13,7 @@
     "sourceMap": true,
     "strict": true,
     "noEmit": true,
+    "resolveJsonModule": true, // with this you can import json files :)
     "experimentalDecorators": true,
     "baseUrl": ".",
     "paths": {

@@ -5,6 +5,7 @@ import { CollectionPeopleType } from '../../types/CollectionPeopleType'
 import { PeopleType } from '../../types/PeopleType'
 import { State, PersonImage } from './state'
 import ALL_PEOPLE_GQL from '~/apollo/queries/allPeople.gql'
+import images from '~/static/assets/data/images.json'
 
 import Log from '~/plugins/log'
 
@@ -28,23 +29,7 @@ const state: State = {
   refetch: null,
   perPageDefault: 12,
   personSelected: null,
-  images: [
-    {
-      id: 'cGVvcGxlOjE=',
-      small: '/assets/img/people/luke.png',
-      big: '/assets/img/people/luke.png'
-    },
-    {
-      id: 'cGVvcGxlOjM=',
-      small: '/assets/img/people/r2d2-small.png',
-      big: '/assets/img/people/r2d2-big.png'
-    },
-    {
-      id: 'cGVvcGxlOjQ=',
-      small: '/assets/img/people/darth-vader.png',
-      big: '/assets/img/people/darth-vader.png'
-    }
-  ],
+  images,
   collection: {
     count: 0,
     next: null,

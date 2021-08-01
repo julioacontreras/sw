@@ -14,6 +14,7 @@
 
 <script lang='ts'>
 import { defineComponent, ref } from '@nuxtjs/composition-api'
+import SlidesJson from '../static/assets/data/slides.json'
 
 interface CarouselType {
   title: string;
@@ -23,12 +24,7 @@ interface CarouselType {
 export default defineComponent({
   name: 'Carousel',
   setup () {
-    const carousels = ref<CarouselType[]>([
-      { title: 'Slide 1', img: '/assets/img/screens/screen.1.jpg' },
-      { title: 'Slide 2', img: '/assets/img/screens/screen.2.jpg' },
-      { title: 'Slide 3', img: '/assets/img/screens/screen.3.jpg' }
-    ])
-
+    const carousels = ref<CarouselType[]>(SlidesJson)
     return {
       carousels
     }
