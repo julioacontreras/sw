@@ -88,7 +88,8 @@ export default {
       default: {
         httpEndpoint: 'http://localhost:4000'
       }
-    }
+    },
+    includeNodeModules: true
   },
 
   buefy: {
