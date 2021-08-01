@@ -1,10 +1,10 @@
 import { useQuery } from '@vue/apollo-composable'
+import { DocumentNode } from 'graphql'
 
 import { defineStore } from 'pinia'
 import { CollectionPeopleType } from '../../types/CollectionPeopleType'
 import { PeopleType } from '../../types/PeopleType'
 import { State, PersonImage } from './state'
-import ALL_PEOPLE_GQL from '~/apollo/queries/allPeople.gql'
 import images from '~/static/assets/data/images.json'
 
 import Log from '~/plugins/log'
@@ -62,7 +62,8 @@ export const usePeopleStore = defineStore({
       const result: PeopleType[] = []
       const peopleFull = this.collection.peopleFull
       for (const person of peopleFull) {
-        if (person.name.toLocaleLowerCase().includes(text)) {
+        const searchText = text.toLocaleLowerCase()
+        if (person.name.toLocaleLowerCase().includes(searchText)) {
           result.push(person)
         }
       }
@@ -88,10 +89,10 @@ export const usePeopleStore = defineStore({
     setPersonSelected (person: PeopleType) {
       this.personSelected = Object.assign({}, person)
     },
-    loadPeople (settings: ParamsLoadPeople) {
+    loadPeople (settings: ParamsLoadPeople, gql: DocumentNode) {
       return new Promise((resolve, reject) => {
         try {
-          const { onResult, onError, refetch } = useQuery<AllPeopleType, any>(ALL_PEOPLE_GQL, {
+          const { onResult, onError, refetch } = useQuery<AllPeopleType, any>(gql, {
             first: settings.first,
             before: settings.before,
             last: settings.last,

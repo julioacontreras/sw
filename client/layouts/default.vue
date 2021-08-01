@@ -16,6 +16,7 @@ import { usePeopleStore } from '../store/people'
 import Log from '../plugins/log'
 import PageHeader from '../components/PageHeader.vue'
 import PageFooter from '../components/PageFooter.vue'
+import ALL_PEOPLE_GQL from '../apollo/queries/allPeople.gql'
 
 export default defineComponent({
   components: {
@@ -30,7 +31,7 @@ export default defineComponent({
     // methods
     const loadPeople = async () => {
       try {
-        await store.loadPeople({ first: store.perPageDefault })
+        await store.loadPeople({ first: store.perPageDefault }, ALL_PEOPLE_GQL)
       } catch (error) {
         Log.error(error)
       }
