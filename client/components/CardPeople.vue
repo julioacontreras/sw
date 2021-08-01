@@ -1,18 +1,18 @@
 <template>
   <div class="card">
     <div class="card-image">
-      <figure class="image is-4by3">
-        <img
-          v-if="!imageSmall"
-          src="https://bulma.io/images/placeholders/1280x960.png"
-          :alt="name"
-        >
-        <img
-          v-if="imageSmall"
-          :src="imageSmall"
-          :alt="name"
-        >
-      </figure>
+      <img
+        v-if="!imageSmall"
+        src="/assets/img/people/no-image.jpg"
+        :alt="name"
+        class="object-cover h-44 w-full"
+      >
+      <img
+        v-if="imageSmall"
+        :src="imageSmall"
+        :alt="name"
+        class="object-scale-down h-44 w-full"
+      >
     </div>
     <div class="card-content">
       <div class="media">
@@ -22,21 +22,15 @@
               {{ name }}
             </nuxt-link>
           </div>
-          <p class="subtitle is-6">
-            #charactar #sw
-          </p>
         </div>
       </div>
 
       <div class="content">
-        <p>
+        <p class="leading-none m-0">
           Birthdat: {{ birthYear }}
         </p>
-        <p>
+        <p class="leading-none m-0">
           Gender: {{ gender }}
-        </p>
-        <p>
-          HairColor: {{ hairColor }}
         </p>
       </div>
     </div>
